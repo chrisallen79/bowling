@@ -1,0 +1,40 @@
+﻿<Properties StartupConfiguration="{A95FCE90-D601-422E-BA51-07779C8FF3B3}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Bowling.React/Controllers/BowlingController.cs">
+    <Files>
+      <File FileName="server/Bowling.Models/Models/Frame.cs" Line="34" Column="22" />
+      <File FileName="server/Bowling.Models/Models/Game.cs" Line="30" Column="46" />
+      <File FileName="client/Bowling.React/Startup.cs" Line="53" Column="57" />
+      <File FileName="client/Bowling.React/Controllers/BowlingController.cs" Line="66" Column="1" />
+      <File FileName="Bowling.Models.Tests/BowlingModelTests.cs" Line="212" Column="1" />
+      <File FileName="client/Bowling.React/ClientApp/src/store/Games.ts" Line="90" Column="73" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Bowling" expanded="True">
+            <Node name="Solution Items" expanded="True" />
+            <Node name="Bowling.Models" expanded="True" />
+            <Node name="Bowling.React" expanded="True" selected="True" />
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.UnitTesting.TestPad">
+        <State name="__root__">
+          <Node name="Bowling" expanded="True" />
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <DisabledProjects>
+    <String>server/Bowling.Models/Bowling.Models.csproj</String>
+    <String>client/Bowling.React/Bowling.React.csproj</String>
+  </DisabledProjects>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Bowling.Models.Tests PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.ItemProperties.Bowling.React PreferredExecutionTarget="/Applications/Firefox.app" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

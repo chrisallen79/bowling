@@ -1,0 +1,83 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+    <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
+    <IsPackable>false</IsPackable>
+    <SpaRoot>ClientApp\</SpaRoot>
+    <DefaultItemExcludes>$(DefaultItemExcludes);$(SpaRoot)node_modules\**</DefaultItemExcludes>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="5.0.9" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Don't publish the SPA source files, but do show them in the project files list -->
+    <Content Remove="$(SpaRoot)**" />
+    <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
+    <None Remove="Swashbuckle.AspNetCore" />
+    <None Remove="ClientApp\src\images\" />
+    <Content Remove="mono_crash.11a67480d0.0.json" />
+    <None Remove="ClientApp\build\index.html" />
+    <None Remove="ClientApp\build\service-worker.js" />
+    <None Remove="ClientApp\build\static\css\main.afe1babf.chunk.css" />
+    <None Remove="ClientApp\build\static\css\2.6aa1047c.chunk.css" />
+    <None Remove="ClientApp\build\static\css\main.afe1babf.chunk.css.map" />
+    <None Remove="ClientApp\build\static\css\2.6aa1047c.chunk.css.map" />
+    <None Remove="ClientApp\build\static\js\2.5bba82fb.chunk.js" />
+    <None Remove="ClientApp\build\static\js\2.5bba82fb.chunk.js.LICENSE.txt" />
+    <None Remove="ClientApp\build\static\js\2.5bba82fb.chunk.js.map" />
+    <None Remove="ClientApp\build\static\js\runtime-main.de8b9411.js.map" />
+    <None Remove="ClientApp\build\static\js\runtime-main.de8b9411.js" />
+    <None Remove="ClientApp\build\static\media\Venminder_Logo_Main_Web.d2c337f0.webp" />
+    <None Remove="ClientApp\build\precache-manifest.0dde9ada599a3843d6eb9cdd36ec6e75.js" />
+    <None Remove="ClientApp\build\static\js\main.f1a280c7.chunk.js.map" />
+    <None Remove="ClientApp\build\static\js\2.a597b864.chunk.js.LICENSE.txt" />
+    <None Remove="ClientApp\build\static\js\main.f1a280c7.chunk.js" />
+    <None Remove="ClientApp\build\static\js\2.a597b864.chunk.js.map" />
+    <None Remove="ClientApp\build\static\js\2.a597b864.chunk.js" />
+    <None Remove="Microsoft.EntityFrameworkCore" />
+    <None Remove="ClientApp\build\precache-manifest.09414c8a3d7765ee553a48da0d20ac7e.js" />
+    <None Remove="ClientApp\build\static\js\main.aa6746ad.chunk.js" />
+    <None Remove="ClientApp\build\static\js\main.aa6746ad.chunk.js.map" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ClientApp\src\images\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Bowling.Models\Bowling.Models.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
+  </ItemGroup>
+  <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
+    <!-- Ensure Node.js is installed -->
+    <Exec Command="node --version" ContinueOnError="true">
+      <Output TaskParameter="ExitCode" PropertyName="ErrorCode" />
+    </Exec>
+    <Error Condition="'$(ErrorCode)' != '0'" Text="Node.js is required to build and run this project. To continue, please install Node.js from https://nodejs.org/, and then restart your command prompt or IDE." />
+    <Message Importance="high" Text="Restoring dependencies using 'npm'. This may take several minutes..." />
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
+  </Target>
+
+  <Target Name="PublishRunWebpack" AfterTargets="ComputeFilesToPublish">
+    <!-- As part of publishing, ensure the JS resources are freshly built in production mode -->
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm run build" />
+
+    <!-- Include the newly-built files in the publish output -->
+    <ItemGroup>
+      <DistFiles Include="$(SpaRoot)build\**; $(SpaRoot)build-ssr\**" />
+      <ResolvedFileToPublish Include="@(DistFiles-&gt;'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
+        <RelativePath>%(DistFiles.Identity)</RelativePath>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      </ResolvedFileToPublish>
+    </ItemGroup>
+  </Target>
+
+</Project>
